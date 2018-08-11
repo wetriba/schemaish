@@ -69,7 +69,7 @@ class Attribute(object):
         @keyword validator: Optional validatish validator.
         @keyword default: Optional default value for the attribute (or None).
         """
-        self._meta_order = _meta_order.next()
+        self._meta_order = next(_meta_order)
         title = k.pop('title', _MISSING)
         if title is not _MISSING:
             self.title = title
