@@ -94,7 +94,7 @@ class Attribute(object):
             return
         try:
             self.validator(value)
-        except validatish.Invalid, e:
+        except validatish.Invalid as e:
             raise Invalid({'':e})
 
     def __repr__(self):
@@ -200,7 +200,7 @@ class Sequence(Container):
             for n, item in enumerate(value):
                 try:
                     self.attr.validate(item)
-                except Invalid, e:
+                except Invalid as e:
                     for k, v in e.error_dict.items():
                         if k == '':
                             error_dict[str(n)] = v
@@ -209,7 +209,7 @@ class Sequence(Container):
 
         try:
             super(Sequence, self).validate(value)
-        except Invalid, e:
+        except Invalid as e:
             error_dict.update(e.error_dict)
             
         if error_dict:
@@ -358,7 +358,7 @@ class Structure(Container):
             for (name, attr) in self.attrs:
                 try:
                     attr.validate(value.get(name))
-                except Invalid, e:
+                except Invalid as e:
                     for k, v in e.error_dict.items():
                         if k == '':
                             error_dict[name] = v
@@ -366,7 +366,7 @@ class Structure(Container):
                             error_dict['%s.%s' % (name, k)] = v
         try:
             super(Structure, self).validate(value)
-        except Invalid, e:
+        except Invalid as e:
             error_dict.update(e.error_dict)
             
         if error_dict:
