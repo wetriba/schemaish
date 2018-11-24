@@ -281,7 +281,7 @@ class _StructureMeta(type):
         cls.attrs = attrs
 
 
-class Structure(Container):
+class Structure(Container, metaclass=_StructureMeta):
     """
     Python dict conforming to a fixed structure.
 
@@ -308,7 +308,6 @@ class Structure(Container):
     """
 
     type = 'Structure'
-    __metaclass__ = _StructureMeta
 
     def __init__(self, attrs=None, **k):
         """
