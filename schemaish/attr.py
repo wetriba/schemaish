@@ -269,7 +269,7 @@ class _StructureMeta(type):
     def __init__(cls, name, bases, clsattrs):
         # Gather attrs specific to this class.
         cls.__schemaish_structure_attrs__ = list(
-            (name, value) for (name, value) in clsattrs.iteritems()
+            (name, value) for (name, value) in clsattrs.items()
             if isinstance(value, Attribute))
         # Combine all attrs from this class and its subclasses.
         attrs = []
