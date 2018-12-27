@@ -7,7 +7,7 @@ __all__ = ['String', 'Integer', 'Float', 'Decimal', 'Date',
            'Time', 'Boolean', 'Sequence', 'Tuple', 'Structure',
            'DateTime','File', 'Invalid']
 
-
+from six import add_metaclass
 import itertools
 import validatish
 
@@ -281,7 +281,8 @@ class _StructureMeta(type):
         cls.attrs = attrs
 
 
-class Structure(Container, metaclass=_StructureMeta):
+@add_metaclass(_StructureMeta)
+class Structure(Container):
     """
     Python dict conforming to a fixed structure.
 
