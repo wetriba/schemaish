@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.5.6'
+version = '0.5.6+wetriba1'
 
 setup(name='schemaish',
       version=version,
